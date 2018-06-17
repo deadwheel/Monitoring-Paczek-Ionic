@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Status zamówienia
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item (click)="openModalPP()">
+      <ion-avatar item-start>
+        <img src="assets/img/pp.png">
+      </ion-avatar>
+      <h2>{{numer}}</h2>
+      <p *ngIf="InfoPaczkaPP; else noentry">{{ostatniStatusPP}}</p>
+    </ion-item>
+    <ion-item (click)="openModalInPost()">
+      <ion-avatar item-start>
+        <img src="assets/img/inpost.png">
+      </ion-avatar>
+      <h2>{{numer}}</h2>
+      <p *ngIf="infoPaczkaInpost; else noentry">{{getFullNameStatus(infoPaczkaInpost["status"])}} {{ getDate(infoPaczkaInpost["updated_at"]) }}</p>
+    </ion-item>
+</ion-list>
+
+<ng-template #noentry>
+  <p>Brak informacji o statusie</p>
+</ng-template>
+</ion-content>

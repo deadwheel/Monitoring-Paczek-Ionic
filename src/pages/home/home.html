@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Monitoring Paczek
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h3 id="sprawdzanieStatusu-heading1" text-center style="margin-bottom: 30px;margin-top: 30px;">
+    Wpisz numer przesyłki
+  </h3>
+    <form (ngSubmit)="sprForm()">
+      <ion-item>
+        <ion-label>Numer</ion-label>
+        <ion-input type="text" [(ngModel)]="numer_przesylki" name="numer_przesylki"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block>Sprawdz numer przesyłki</button>
+    </form>
+
+    <p *ngIf="errorsd" >{{errorsd}}</p>
+
+  <h3 id="sprawdzanieStatusu-heading7" text-center style="margin-bottom: 30px;margin-top: 30px;">
+    Lub zeskanuj kod
+  </h3>
+  <button id="sprawdzanieStatusu-button7" (click)="scan()" ion-button color="positive" block>
+    Kliknij by zeskanować!
+  </button>
+
+
+</ion-content>

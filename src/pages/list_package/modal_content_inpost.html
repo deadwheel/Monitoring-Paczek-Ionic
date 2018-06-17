@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Szczegóły
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+  
+        <ion-item *ngIf="infoPaczkaInpost.created_at">
+            Data nadania:
+          <ion-note item-end>
+            {{ getDate(infoPaczkaInpost["created_at"]) }}
+          </ion-note>
+        </ion-item>
+        <ion-item *ngIf="infoPaczkaInpost.type">
+            Typ:
+          <ion-note item-end>
+            {{ getType() }}
+          </ion-note>
+        </ion-item>
+        <ion-item *ngIf="infoPaczkaInpost.custom_attributes.size">
+            Gabaryt:
+          <ion-note item-end>
+            {{ infoPaczkaInpost.custom_attributes.size }}
+          </ion-note>
+        </ion-item>
+        <ion-item *ngIf="infoPaczkaInpost.custom_attributes.target_machine_id">
+            Nazwa paczkomatu odbiorczego:
+          <ion-note item-end>
+            {{ infoPaczkaInpost.custom_attributes.target_machine_id }}
+          </ion-note>
+        </ion-item>
+        </ion-list>
+        
+
+
+    <ion-list *ngIf="infoPaczkaInpost.tracking_details">
+        <ion-list-header>
+            Zdarzenia:
+        </ion-list-header>
+        <ion-item *ngFor="let zdarz of infoPaczkaInpost.tracking_details.reverse()">
+            {{ getFullNameStatus(zdarz.status) }}
+            <ion-note item-end>
+                {{getDate(zdarz.datetime)}}
+            </ion-note>
+        </ion-item>
+    </ion-list>
+  </ion-content>
